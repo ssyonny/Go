@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install)",
+      "Bash(where:*)",
+      "Bash(echo:*)",
+      "Bash(cmd.exe /c \"where node && where npm\")",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH\")",
+      "Bash(node --version:*)",
+      "Bash(npm:*)",
+      "Bash(npx tsc:*)",
+      "Bash(npx vite build:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:$PATH:/c/Program Files/PostgreSQL/16/bin:/c/Program Files/PostgreSQL/17/bin\")",
+      "Bash(psql:*)",
+      "Bash(redis-cli:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:/c/Program Files/PostgreSQL/16/bin:/c/Program Files/PostgreSQL/17/bin:$PATH\")",
+      "Bash(find:*)",
+      "Bash(export PATH=\"/c/Program Files/nodejs:/c/Program Files/PostgreSQL/16/bin:/c/Program Files/Redis:$PATH\")",
+      "Bash(\"/c/Program Files/PostgreSQL/16/bin/psql.exe\" --version)",
+      "Bash(\"/c/Program Files/Redis/redis-cli.exe\" --version)",
+      "Bash(cmd.exe /c \"\"\"C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe\"\" --version\")",
+      "Bash(cmd.exe /c \"\"\"C:\\\\Program Files\\\\Redis\\\\redis-cli.exe\"\" --version\")",
+      "Bash(cmd.exe /c \"set PATH=C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin;C:\\\\Program Files\\\\Redis;C:\\\\Program Files\\\\nodejs;%PATH% && psql --version && redis-cli --version\")",
+      "Bash(PSQL=\"/c/Program Files/PostgreSQL/16/bin/psql.exe\")",
+      "Bash(\"$PSQL\" --version)",
+      "Bash(/c/Program\\\\ Files/PostgreSQL/16/bin/psql.exe:*)",
+      "Bash(PATH=\"$PATH:/c/Program Files/PostgreSQL/16/bin:/c/Program Files/Redis:/c/Program Files/nodejs\")",
+      "Bash(export PATH)",
+      "Bash(PATH=\"$PATH:/c/Program Files/PostgreSQL/16/bin:/c/Program Files/Redis:/c/Program Files/nodejs\" exec psql --version)",
+      "Bash(winpty \"/c/Program Files/PostgreSQL/16/bin/psql.exe\" --version:*)",
+      "Bash(cmd //c '\"\"C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe\"\" --version')",
+      "Bash(cmd.exe /c \"C:\\\\Program^ Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe --version\")",
+      "Bash(cmd.exe /c \"C:\\\\PROGRA~1\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe --version\")",
+      "Bash(powershell.exe -Command \"& ''C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe'' --version\")",
+      "Bash(powershell.exe -NoProfile -Command \"& ''C:\\\\Program Files\\\\PostgreSQL\\\\16\\\\bin\\\\psql.exe'' --version\")",
+      "Bash(powershell.exe -NoProfile -Command \"psql --version\")"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "baduk-for-everyone",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:client": "npm run dev -w @baduk/client",
+    "dev:server": "npm run dev -w @baduk/server",
+    "build": "npm run build --workspaces --if-present",
+    "lint": "eslint packages/*/src --ext .ts,.tsx"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

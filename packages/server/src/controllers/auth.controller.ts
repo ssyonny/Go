@@ -1,5 +1,14 @@
 import { Request, Response, NextFunction } from 'express';
+import type { AccessTokenPayload } from '../utils/jwt';
 import { authService } from '../services/auth.service';
+
+declare global {
+  namespace Express {
+    interface Request {
+      user?: AccessTokenPayload;
+    }
+  }
+}
 
 function success(res: Response, data: any, statusCode = 200) {
   return res.status(statusCode).json({

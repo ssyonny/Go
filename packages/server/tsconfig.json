@@ -6,7 +6,7 @@
     "outDir": "dist",
     "rootDir": "src"
   },
-  "include": ["src"],
+  "include": ["src", "src/types/express.d.ts"],
   "references": [
     { "path": "../shared" }
   ]

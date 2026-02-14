@@ -21,21 +21,26 @@ export const authService = {
     const nicknameCheck = validateNickname(nickname);
     if (!nicknameCheck.valid) throw new ApiError(400, 'VALIDATION_ERROR', nicknameCheck.error!);
 
-    const existingUser = await userRepository.findByUsername(username);
-    if (existingUser) throw new ApiError(409, 'USER_USERNAME_TAKEN', '이미 사용 중인 아이디입니다.');
+    try {
+      const existingUser = await userRepository.findByUsername(username);
+      if (existingUser) throw new ApiError(409, 'USER_USERNAME_TAKEN', '이미 사용 중인 아이디입니다.');
 
-    const existingNickname = await userRepository.findByNickname(nickname);
-    if (existingNickname) throw new ApiError(409, 'USER_NICKNAME_TAKEN', '이미 사용 중인 닉네임입니다.');
+      const existingNickname = await userRepository.findByNickname(nickname);
+      if (existingNickname) throw new ApiError(409, 'USER_NICKNAME_TAKEN', '이미 사용 중인 닉네임입니다.');
 
-    const passwordHash = await hashPassword(password);
-    const user = await userRepository.create(username, passwordHash, nickname);
+      const passwordHash = await hashPassword(password);
+      const user = await userRepository.create(username, passwordHash, nickname);
 
-    const accessToken = signAccessToken({ userId: user.id, username: user.username, nickname: user.nickname });
-    const refreshToken = signRefreshToken({ userId: user.id });
+      const accessToken = signAccessToken({ userId: user.id, username: user.username, nickname: user.nickname });
+      const refreshToken = signRefreshToken({ userId: user.id });
 
-    await userRepository.updateRefreshToken(user.id, hashToken(refreshToken));
+      await userRepository.updateRefreshToken(user.id, hashToken(refreshToken));
 
-    return { user, accessToken, refreshToken };
+      return { user, accessToken, refreshToken };
+    } catch (err) {
+      if (err instanceof ApiError) throw err;
+      throw new ApiError(503, 'DATABASE_ERROR', '데이터베이스 연결 오류: PostgreSQL이 실행 중이지 않습니다. 관리자에게 문의하세요.');
+    }
   },
 
   async login(username: string, password: string): Promise<AuthResponse> {

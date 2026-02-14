@@ -15,24 +15,29 @@ export function useBoard(initialSize: BoardSize = 19) {
       const newGrid = prev.grid.map((row) => [...row]);
       newGrid[pos.y][pos.x] = prev.currentTurn;
 
-      placed = true;
-      return {
+      const newState: BoardState = {
         ...prev,
         grid: newGrid,
         currentTurn: prev.currentTurn === StoneColor.Black ? StoneColor.White : StoneColor.Black,
         lastMove: pos,
         moveCount: prev.moveCount + 1,
       };
+
+      placed = true;
+      return newState;
     });
     return placed;
   }, []);
 
   const pass = useCallback(() => {
-    setBoardState((prev) => ({
-      ...prev,
-      currentTurn: prev.currentTurn === StoneColor.Black ? StoneColor.White : StoneColor.Black,
-      moveCount: prev.moveCount + 1,
-    }));
+    setBoardState((prev) => {
+      const newState: BoardState = {
+        ...prev,
+        currentTurn: prev.currentTurn === StoneColor.Black ? StoneColor.White : StoneColor.Black,
+        moveCount: prev.moveCount + 1,
+      };
+      return newState;
+    });
   }, []);
 
   const reset = useCallback((size?: BoardSize) => {

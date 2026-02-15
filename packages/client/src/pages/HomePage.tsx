@@ -59,6 +59,14 @@ export default function HomePage() {
             </div>
           )}
 
+          {user && (
+            <Link to="/lobby">
+              <Button style={{ fontSize: 'var(--font-size-lg)', padding: '1rem 3rem', backgroundColor: 'var(--color-accent)' }}>
+                온라인 대국하기
+              </Button>
+            </Link>
+          )}
+
           <Link to="/board">
             <Button style={{ fontSize: 'var(--font-size-lg)', padding: '1rem 3rem' }}>
               자유대국 (테스트 모드)

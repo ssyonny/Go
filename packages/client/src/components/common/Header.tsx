@@ -22,6 +22,8 @@ export default function Header() {
       </Link>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)' }}>
         <Link to="/board" style={{ color: '#fff' }}>바둑판</Link>
+        {user && <Link to="/lobby" style={{ color: '#fff' }}>대국장</Link>}
+        <Link to="/leaderboard" style={{ color: '#fff' }}>순위표</Link>
         {user ? (
           <>
             <Link to="/profile" style={{ color: '#fff' }}>{user.nickname}</Link>

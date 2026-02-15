@@ -5,6 +5,7 @@ import { userRepository } from '../repositories/user.repository';
 import { hashPassword, comparePassword } from '../utils/hash';
 import { signAccessToken, signRefreshToken, verifyRefreshToken } from '../utils/jwt';
 import { ApiError } from '../utils/ApiError';
+import { onlineService } from './online.service';
 
 function hashToken(token: string): string {
   return crypto.createHash('sha256').update(token).digest('hex');
@@ -63,6 +64,7 @@ export const authService = {
 
   async logout(userId: string): Promise<void> {
     await userRepository.updateRefreshToken(userId, null);
+    await onlineService.removeUser(userId).catch(() => {});
   },
 
   async refreshToken(token: string): Promise<{ accessToken: string; refreshToken: string }> {

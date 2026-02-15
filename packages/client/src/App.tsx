@@ -7,6 +7,9 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage';
 import BoardPage from './pages/BoardPage';
+import LobbyPage from './pages/LobbyPage';
+import WaitingRoomPage from './pages/WaitingRoomPage';
+import LeaderboardPage from './pages/LeaderboardPage';
 
 function App() {
   return (
@@ -18,8 +21,11 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/board" element={<BoardPage />} />
+            <Route path="/leaderboard" element={<LeaderboardPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/lobby" element={<LobbyPage />} />
+              <Route path="/lobby/room/:roomId" element={<WaitingRoomPage />} />
             </Route>
           </Route>
         </Routes>

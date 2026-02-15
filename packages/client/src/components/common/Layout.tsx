@@ -1,7 +1,10 @@
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
+import { useHeartbeat } from '../../hooks/useHeartbeat';
 
 export default function Layout() {
+  useHeartbeat();
+
   return (
     <>
       <Header />

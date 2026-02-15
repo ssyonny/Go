@@ -20,3 +20,16 @@ export function authMiddleware(req: Request, _res: Response, next: NextFunction)
     return next(new ApiError(401, 'AUTH_TOKEN_INVALID', '유효하지 않은 토큰입니다.'));
   }
 }
+
+export function optionalAuthMiddleware(req: Request, _res: Response, next: NextFunction) {
+  const authHeader = req.headers.authorization;
+  if (!authHeader?.startsWith('Bearer ')) {
+    return next();
+  }
+  try {
+    req.user = verifyAccessToken(authHeader.split(' ')[1]);
+  } catch {
+    // invalid token, proceed without user
+  }
+  next();
+}

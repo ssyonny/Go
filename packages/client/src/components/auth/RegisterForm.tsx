@@ -110,7 +110,7 @@ export default function RegisterForm() {
         type="password"
         value={password}
         onChange={(e) => { setPassword(e.target.value); validateField('password', e.target.value); }}
-        placeholder="영문+숫자+특수문자 8자 이상"
+        placeholder="영문+숫자 포함 8자 이상"
         error={errors.password}
         required
       />
